@@ -27,7 +27,7 @@ int cntCoponents(vector<int> adj[], int n, int start){
 
 }
 
-vector<int> dfs(int N, int start, vector<int> adj[]){
+vector<int> dfs(int N, int start, vector<vector<int> >& adj){
     stack<int> st;
     vector<int> vis(N+1, 0);
     vector<int> ans;
@@ -52,7 +52,8 @@ int main(){
     int n, m;
     cin>>n>>m;
     //1 based indexing
-    vector<int> adj[n+1];
+    // vector<int> adj[n+1];
+    vector<vector<int> > adj(n + 1);
     for(int i=0; i<m; i++){
         int u, v;
         cin>>u>>v;
@@ -60,6 +61,7 @@ int main(){
         adj[u].push_back(v);
         // adj[v].push_back(u);
     }
+
 
     // int ans = cntCoponents(adj, n, 1);
     vector<int> ans = dfs(n, 1, adj);
