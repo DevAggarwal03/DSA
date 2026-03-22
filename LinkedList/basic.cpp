@@ -33,6 +33,18 @@ void printLL (Node* head){
     cout<<endl;
 }
 
+Node* reverseLL(Node* head) {
+    if(head -> next == NULL){
+        return head;
+    }
+
+    Node* revHead = reverseLL(head -> next);
+    head -> next -> next = head;
+    head -> next = NULL;
+
+    return revHead;
+}
+
 void insertAtEnd(Node* &tail, int data){
     // Node* temp = head;
     // while(temp -> next != NULL){
@@ -118,17 +130,20 @@ int main(){
     insertInTheMiddle(head, tail, 100, 4);
     insertInTheMiddle(head, tail, 123, 4);
     printLL(head);
+    Node* newHead = reverseLL(head);
+    printLL(newHead);
 
-    deleteAtTail(tail, head);
-    deleteAtStart(head);
-    deleteAtIndex(head, 0, tail);
 
-    cout<<endl;
-    printLL(head);
+    // deleteAtTail(tail, head);
+    // deleteAtStart(head);
+    // deleteAtIndex(head, 0, tail);
 
-    cout<<endl;
-    cout<<head->data;
-    cout<<endl;
-    cout<<tail->data;
+    // cout<<endl;
+    // printLL(head);
+
+    // cout<<endl;
+    // cout<<head->data;
+    // cout<<endl;
+    // cout<<tail->data;
     return 1;
 }
